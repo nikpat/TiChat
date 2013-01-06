@@ -2,7 +2,8 @@ function Login() {
 	//create object instance, a parasitic subclass of Observable
 	//create component instance
 	var self = Ti.UI.createWindow({
-		backgroundColor: 'black'//'#C9C9C9',
+		backgroundColor: 'black',//'#C9C9C9',
+		exitOnClose:true
 	});
 		
 	var nickName = Ti.UI.createTextField({

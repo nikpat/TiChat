@@ -5,15 +5,13 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.063214 seconds on emulator to get ready
+[DEBUG] waited 0.018620 seconds on emulator to get ready
 [DEBUG] neo.chat.app installed? False
 [INFO] Copying CommonJS modules...
 [INFO] Copying project resources..
-[TRACE] COPYING MODIFIED FILE: /Users/prathameshnavghare/Documents/Titanium_Studio_Workspace/NeoChat/Resources/ui/common/Body.js => /Users/prathameshnavghare/Documents/Titanium_Studio_Workspace/NeoChat/build/android/bin/assets/Resources/ui/common/Body.js
-[TRACE] Generating Java Classes
+[INFO] Tiapp.xml unchanged, skipping class generation
 [DEBUG] Processing Android resource drawables
-[DEBUG] copying app icon: /Users/prathameshnavghare/Documents/Titanium_Studio_Workspace/NeoChat/build/android/bin/assets/Resources/appicon.png
-[DEBUG] generating theme.xml
+[DEBUG] copying default app icon
 [DEBUG] found drawable-long-land-hdpi splash screen at /Users/prathameshnavghare/Documents/Titanium_Studio_Workspace/NeoChat/Resources/android/images/res-long-land-hdpi/default.png
 [DEBUG] copying /Users/prathameshnavghare/Documents/Titanium_Studio_Workspace/NeoChat/Resources/android/images/res-long-land-hdpi/default.png splash screen to /Users/prathameshnavghare/Documents/Titanium_Studio_Workspace/NeoChat/build/android/res/drawable-long-land-hdpi/background.png
 [DEBUG] found drawable-long-land-ldpi splash screen at /Users/prathameshnavghare/Documents/Titanium_Studio_Workspace/NeoChat/Resources/android/images/res-long-land-ldpi/default.png
@@ -34,14 +32,13 @@ Logfile initialized
 [DEBUG] copying /Users/prathameshnavghare/Documents/Titanium_Studio_Workspace/NeoChat/Resources/android/images/res-notlong-port-ldpi/default.png splash screen to /Users/prathameshnavghare/Documents/Titanium_Studio_Workspace/NeoChat/build/android/res/drawable-notlong-port-ldpi/background.png
 [DEBUG] found drawable-notlong-port-mdpi splash screen at /Users/prathameshnavghare/Documents/Titanium_Studio_Workspace/NeoChat/Resources/android/images/res-notlong-port-mdpi/default.png
 [DEBUG] copying /Users/prathameshnavghare/Documents/Titanium_Studio_Workspace/NeoChat/Resources/android/images/res-notlong-port-mdpi/default.png splash screen to /Users/prathameshnavghare/Documents/Titanium_Studio_Workspace/NeoChat/build/android/res/drawable-notlong-port-mdpi/background.png
-[DEBUG] found splash screen at /Users/prathameshnavghare/Documents/Titanium_Studio_Workspace/NeoChat/build/android/bin/assets/Resources/default.png
-[TRACE] Writing out AndroidManifest.xml
-[DEBUG] adding /Users/prathameshnavghare/Documents/Titanium_Studio_Workspace/NeoChat/build/android/gen/neo/chat/app/NeochatActivity.java to javac build list
-[DEBUG] adding /Users/prathameshnavghare/Documents/Titanium_Studio_Workspace/NeoChat/build/android/gen/neo/chat/app/NeochatAppInfo.java to javac build list
-[DEBUG] adding /Users/prathameshnavghare/Documents/Titanium_Studio_Workspace/NeoChat/build/android/gen/neo/chat/app/NeochatApplication.java to javac build list
+[DEBUG] copying default splash screen
 [DEBUG] adding /Users/prathameshnavghare/Documents/Titanium_Studio_Workspace/NeoChat/build/android/gen/neo/chat/app/R.java to javac build list
-[DEBUG] Building Java Sources: "/Users/prathameshnavghare/Documents/Titanium_Studio_Workspace/NeoChat/build/android/gen/neo/chat/app/NeochatActivity.java" "/Users/prathameshnavghare/Documents/Titanium_Studio_Workspace/NeoChat/build/android/gen/neo/chat/app/NeochatAppInfo.java" "/Users/prathameshnavghare/Documents/Titanium_Studio_Workspace/NeoChat/build/android/gen/neo/chat/app/NeochatApplication.java" "/Users/prathameshnavghare/Documents/Titanium_Studio_Workspace/NeoChat/build/android/gen/neo/chat/app/R.java"
+[DEBUG] Building Java Sources: "/Users/prathameshnavghare/Documents/Titanium_Studio_Workspace/NeoChat/build/android/gen/neo/chat/app/R.java"
 [INFO] Compiling Android Resources... This could take some time
+[ERROR] Timed out waiting for android.process.acore
+[INFO] Installing application on device
+[INFO] Application installed. Launch from drawer on Home Screen
 [DEBUG] Android classes.dex built
 [DEBUG] creating unsigned apk: /Users/prathameshnavghare/Documents/Titanium_Studio_Workspace/NeoChat/build/android/bin/app-unsigned.apk
 [DEBUG] from resource zip => assets/Resources/bin/builder.js
@@ -112,6 +109,6 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.015143 seconds on emulator to get ready
+[DEBUG] waited 0.018264 seconds on emulator to get ready
 [INFO] Installing application on device
 [INFO] Application installed. Launch from drawer on Home Screen

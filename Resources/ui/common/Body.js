@@ -8,6 +8,8 @@ function Body() {
 				
 	});
 	
+
+	
 	var statusBar = Ti.UI.createView({
 		top:'0dp',
 		height:'20dp',
@@ -47,10 +49,7 @@ function Body() {
 	var Chat = require('ui/common/Chat');
 	
 	table.addEventListener('click',function(e){
-		var ChatWin = new Chat();
-		alert(e.row.title);
-		ChatWin.toUser = e.row.title;
-		//ChatWin.chatArr = Ti.API.UserArr[e.row.title];
+		var ChatWin = new Chat(e.rowData.uName);
 		Ti.App.fireEvent('initSession',{toUser:e.row.title});
 		ChatWin.open();
 	});
@@ -59,7 +58,23 @@ function Body() {
 		
 		var tdata =new Array();
 		for(i=0;i<online_users.length;i++){
-			tdata.push({title:online_users[i]});
+			var unameLabel = Ti.UI.createLabel({
+						left: '10dp', top:'10dp', 
+						height:'21dp',
+						font:{fontSize:'16d', fontWeight:'black'},
+						text:online_users[i],
+						textAlign:'left', color:'orange',
+						shadowColor:'gray',shadowOffset:{x:0,y:1}
+				});
+				
+			var unameRow = Titanium.UI.createTableViewRow({
+										uName: online_users[i],
+										id:'21dp',
+	                       				height:40,
+										font:{size:20,fontWeight:'bold'}										 
+               					});
+             unameRow.add(unameLabel)
+			tdata.push(unameRow);
 		}
 		Ti.API.info(JSON.stringify(tdata));
 		table.data = tdata;

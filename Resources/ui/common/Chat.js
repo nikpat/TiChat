@@ -1,9 +1,16 @@
 //FirstView Component Constructor
-function Chat() {
+function Chat(toUser) {
 	//create object instance, a parasitic subclass of Observable
 	var self = Ti.UI.createWindow({
 		backgroundColor:'#ffffff',
+		exitOnClose:true
 	});
+	
+	if(Ti.Platform.osname == 'android'){
+		self.addEventListener('android:back',function(){
+			self.close();
+		});
+	}
 	
 /// status bar
 	var statusBar = Ti.UI.createView({
@@ -13,12 +20,11 @@ function Chat() {
 		width:'100%'
 	});
 	
-	alert('ss='+self.toUser);
 	//label using localization-ready strings from <app dir>/i18n/en/strings.xml
 	var status = Ti.UI.createLabel({
 		color:'#000000',
 		font: { fontSize:'18dp' },
-		text:self.toUser,
+		text:toUser,
 		left:5
 	});
 	
@@ -38,43 +44,33 @@ function Chat() {
 	});
 ///
 
-	
-	var MainChatView = Ti.UI.createScrollView({
-		top:'21dp',
-		bottom:0,
-		backgroundColor:'#E6E6E6',
-		visible:false,
-	
-	});
+	var chatData = Ti.API.UserArr[toUser];
 
-		
-	if(Ti.API.UserArr != undefined)
-	{
-		var chatData = self.chatArr;
-	}
-	else{
-		var chatData = [];
-	}
 			
 	var convView = Ti.UI.createTableView({
+	  top:'21dp',
 	  bottom:'40dp',
       contentHeight: 'auto',
-      separatorColor: 'transparent' 
+      separatorColor: 'transparent',
+      data:chatData
       //layout: 'vertical'
 	});
 
-	MainChatView.add(convView);
+	self.add(convView);
 	// array for each user
    	
-    
-	Ti.App.addEventListener('msgEvent',function(e){
-		alert(e.key+"=="+MainChatView.toUser);
+    var setMsgs = function(e){
 		
-		if(e.key==MainChatView.toUser){
+		if(e.key==toUser){
 			createRow(e.key,e.msg);
 		}
-	});
+	}
+    
+	Ti.App.addEventListener('msgEvent',setMsgs);
 	
+	self.addEventListener('close',function(){
+		Ti.App.removeEventListener('msgEvent',setMsgs);
+	});
 	
 	function createRow(usr,msg) {
 		  var row = Ti.UI.createTableViewRow({
@@ -93,10 +89,14 @@ function Chat() {
   	 		    top: 10
 			});		  
 		  row.add(lview);
-		  chatData.push(row);
+		  //chatData.push(row);
 		  // push data to respective user array
-		  Ti.API.UserArr[usr] = chatData;
-		  convView.data = chatData;
+		  Ti.API.UserArr[usr].push(row);
+		  Ti.API.info(chatData);
+		  //convView.data = chatData;
+		  convView.setData(chatData);
+		  //alert(usr+':'+msg);
+		  //alert(JSON.stringify(chatData));
 		} 
 	
 	
@@ -123,7 +123,6 @@ function Chat() {
 	
 	
 	send.addEventListener('click',function(e){
-		var toUser = MainChatView.toUser;
 		var sendmsg = msg.value;
 		var curUser = Ti.App.Properties.getString('nickName');
 		Ti.App.fireEvent('sendMsg',
@@ -136,10 +135,10 @@ function Chat() {
 		})
 		msg.value ="";
 		msg.blur();
-		createRow(curUser,sendmsg);
+		createRow(toUser,sendmsg);
 	});
 	
-	self.add(MainChatView);
+	//self.add(MainChatView);
 	return self;
 }
 

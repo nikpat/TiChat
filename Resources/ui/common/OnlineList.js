@@ -4,7 +4,30 @@ function OnlineList() {
 	//create component instance
 	var self = Ti.UI.createWindow({
 		backgroundColor:'#ffffff',
+		exitOnClose:true
 	});
+	
+	if(Ti.Platform.osname == 'android'){
+		self.addEventListener('android:back',function(e){
+			  var dialog = Ti.UI.createAlertDialog({
+			    cancel: 1,
+			    buttonNames: ['Exit', 'Cancel'],
+			    message: 'Are you sure ?',
+			    title: 'Delete'
+			  });
+			  dialog.addEventListener('click', function(e){
+			    if (e.index === e.source.cancel){
+			      Ti.API.info('The cancel button was clicked');
+			    }
+			    if(e.index === 0){
+			      Ti.App.Properties.removeProperty('nickName');
+			      var activity = Titanium.Android.currentActivity;
+					activity.finish();
+			    }   
+			  });
+			  dialog.show();
+		});
+	}
 	
 	Array.prototype.remove = function(from, to) {
 	  var rest = this.slice((to || from) + 1 || this.length);
@@ -110,7 +133,7 @@ function OnlineList() {
 			sessionkey:obj.sessionkey,
 			from:obj.from
 		};
-		alert(sendData);
+		//alert(sendData);
 		ws.send(JSON.stringify(sendData));
 		
 	});
